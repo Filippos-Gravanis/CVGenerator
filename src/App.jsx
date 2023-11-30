@@ -3,7 +3,7 @@ import './App.css'
 import Header from "./header.jsx"
 import BasicInfo from './BasicInfo.jsx'
 import EducationInfo from "./EducationInfo.jsx"
-
+import ExperienceInfo from './ExperienceInfo.jsx'
 function App() {
 
   return (
@@ -13,6 +13,7 @@ function App() {
     <div className='cvEdit'>
     <BasicInfo/>
     <EducationInfo/>
+    <ExperienceInfo/>
     </div>
     <div className="cvView">
 

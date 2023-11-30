@@ -1,29 +1,14 @@
 import "./InfoCards.css"
 import imgurl from "./assets/arrow.svg"
+import showButtonHandler from "./sharedFunctions"
 export default function BasicInfo(){
-    let isActive = false
-    function showButtonHandler(){
-        const showMenuButton = document.querySelector('.showMenuButton')
-        const dropDownMenu = document.querySelector('.dropDownMenu')
-        const container = document.querySelector('.container')
-        if (showMenuButton.classList.contains('clicked')){
-        showMenuButton.classList.remove('clicked')
-        dropDownMenu.classList.remove('active')
-        container.classList.remove('nobottomborder')
-        }
-        else{
-            showMenuButton.classList.add('clicked')
-            dropDownMenu.classList.add('active')
-            container.classList.add('nobottomborder')
-        }
-    } 
     return (
-        <div className="basicInfoContainer">
-        <button onClick={showButtonHandler}  className="container">
+        <div>
+        <button onClick={()=>showButtonHandler("basicInfo")} id="basicInfoContainer" className="container">
             <p className="ButtonLabel" >Basic Info</p>
-            <img className="showMenuButton" src={imgurl}></img>
+            <img className="showMenuButton" id="basicInfoShowMenuButton" src={imgurl}></img>
         </button>
-        <BasicInfoDropDown isActive={isActive} />
+        <BasicInfoDropDown/>
         </div>
     )
 
@@ -32,13 +17,13 @@ export default function BasicInfo(){
 
 function BasicInfoDropDown(){
     return(
-        <div className="dropDownMenu">
-            <label htmlFor="">Name</label>
-            <input type="text" name="Name" />
-            <label htmlFor="">Surname</label>
-            <input type="text" />
-            <label htmlFor="">Email</label>
-            <input type="text" name="" id="" />
+        <div className="dropDownMenu" id="basicInfoDropDownMenu">
+            <label htmlFor="name">Name</label>
+            <input type="text" placeholder="Name" name="name" />
+            <label htmlFor="surname">Surname</label>
+            <input type="text" placeholder="Surname" name="surname"/>
+            <label htmlFor="email">Email</label>
+            <input type="text" name="email" id="" placeholder="Email" />
         </div>
     )
 }
