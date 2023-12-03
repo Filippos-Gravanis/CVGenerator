@@ -6,7 +6,7 @@ export default function ExperienceInfo(){
         <div>
         <button onClick={()=>showButtonHandler("experienceInfo")} id="experienceInfoContainer" className="container">
             <p className="ButtonLabel" >Experience</p>
-            <img className="showMenuButton" id="experienceInfoShowMenuButton" src={imgurl}></img>
+            <img className="showMenuButton" id="experienceInfoShowMenuButton"  src={imgurl}></img>
         </button>
         <ExperienceInfoDropDown/>
         </div>
