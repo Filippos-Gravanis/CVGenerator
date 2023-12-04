@@ -10,6 +10,7 @@ function App() {
       "name": "",
       "surname": "",
       "email":"",
+      "education":[]
     }
 
   )
@@ -25,14 +26,19 @@ function App() {
       setInfo({...info,email:email.target.value})
     }
 
-  console.log(info)
+    function addEducation (education){
+      console.log(info.education)
+      setInfo({...info,education:info.education.concat(education)})
+    }
+
+
   return (
     <div className='main'>
     <Header/>
     <div className='content'>
     <div className='cvEdit'>
     <BasicInfo setName={setName} info={info} setSurname={setSurname} setEmail={setEmail} />
-    <EducationInfo/>
+    <EducationInfo handleAdd={addEducation} />
     <ExperienceInfo/>
     </div>
     <div className="cvView">
