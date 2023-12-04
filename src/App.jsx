@@ -38,7 +38,7 @@ function App() {
     <div className='content'>
     <div className='cvEdit'>
     <BasicInfo setName={setName} info={info} setSurname={setSurname} setEmail={setEmail} />
-    <EducationInfo handleAdd={addEducation} />
+    <EducationInfo handleAdd={addEducation} educationItems={info.education} />
     <ExperienceInfo/>
     </div>
     <div className="cvView">
