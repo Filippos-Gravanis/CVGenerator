@@ -16,6 +16,24 @@ export default function ExperienceInfo(){
 
 
 function ExperienceInfoDropDown(){
+    const [experience, setExprerience] = useState({
+        "companyName": "",
+        "positionTitle": "",
+        "expStartDate": "",
+        "expEndDate": "",
+        "id":"",
+
+
+    })
+    function handleChange (e) {
+        console.log(experience)
+        setExprerience({...experience,[e.target.name]:e.target.value,})
+    }
+    function handleExperienceClick (e){
+        console.log(e.target.id)
+        deleteExperience(e.target.id)
+    }
+
     return(
         <div className="dropDownMenu" id="experienceInfoDropDownMenu">
             <label htmlFor="companyName">Company Name</label>

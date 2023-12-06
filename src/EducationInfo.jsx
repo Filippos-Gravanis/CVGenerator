@@ -1,5 +1,6 @@
 import { useState } from "react"
 import imgurl from "./assets/arrow.svg"
+import deleteUrl from "./assets/delete.svg"
 import "./InfoCards.css"
 import showButtonHandler from "./sharedFunctions"
 
@@ -42,16 +43,27 @@ function EducationInfoDropDown({deleteEducation,handleAdd,educationItems}) {
         <div className="dropDownMenu" id="educationInfoDropDownMenu">
             <EducationItems items={educationItems} handleEducationClick={handleEducationClick} />
             <label htmlFor="institution">Institution</label>
-            <input type="text" value={education.institution} onChange={handleChange} name="institution" placeholder="Institution" />
+            <input required type="text" value={education.institution} onChange={handleChange} name="institution" placeholder="Institution" />
             <label htmlFor="titleOfStudy">Title Of Study</label>
-            <input type="text" onChange={handleChange} name="titleOfStudy" value={education.titleOfStudy} placeholder="Title Of Study" />
+            <input required type="text" onChange={handleChange} name="titleOfStudy" value={education.titleOfStudy} placeholder="Title Of Study" />
             <label htmlFor="startDate">Start Date</label>
             <input type="text" onChange={handleChange} name="startDate" value={education.startDate} placeholder="Start Date" />
             <label htmlFor="endDate">End Date</label>
             <input type="text" onChange={handleChange} name="endDate" placeholder="End Date" value={education.endDate} />
-            <button onClick={()=>{
+            <button type="submit" onClick={()=>{
                 setEducation({...education,id:(Math.random()*10000)})
-                handleAdd(education)}}
+                handleAdd(education)
+                setEducation({
+                    "institution": "",
+                    "titleOfStudy": "",
+                    "startDate": "",
+                    "endDate": "",
+                    "id":"",
+            
+            
+                })
+            }}
+                
                 >Add</button>
         </div>
     )
@@ -59,7 +71,15 @@ function EducationInfoDropDown({deleteEducation,handleAdd,educationItems}) {
 
 function EducationItems ({items,handleEducationClick}){
     let itemsElements =  items.map(item=>{
-            return (<button id={item.id} onClick={handleEducationClick} >{item.titleOfStudy}</button>)
+            return (
+            <div className="educationItem" key={item.id}>
+            <div className="educationItemHeaderContainer">
+                <div className="educationItemHeader"  id={item.id} onClick={()=>{}} >{item.titleOfStudy}</div>
+                <img src={deleteUrl} onClick={handleEducationClick} className="deleteIcon" alt=""/>
+            </div>
+            <hr className="divider" />
+            </div>
+            )
            
     })
     return itemsElements

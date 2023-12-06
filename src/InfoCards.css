@@ -87,3 +87,31 @@ input{
 input:focus{
     outline: none;
 }
+
+.educationItemHeader {
+    cursor: pointer;
+    margin-bottom: 0px;
+    flex-grow: 1;
+}
+
+.educationItem:hover{
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: .5rem;
+}
+.divider{
+    height: 1px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: rgb(180, 180, 180);
+    border-radius: 5px;
+    width: 100%;
+}
+.educationItemHeaderContainer{
+    display: flex;
+}
+
+.deleteIcon{
+    cursor:pointer;
+    margin-right: 5px;
+}
