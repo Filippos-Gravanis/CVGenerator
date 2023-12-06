@@ -31,6 +31,14 @@ function App() {
       setInfo({...info,education:info.education.concat(education)})
     }
 
+    function deleteEducation (id){
+      console.log(id)
+      info.education.forEach(element => {
+        console.log(element.id,id)
+      });
+      setInfo({...info,education:info.education.filter(edu => edu.id != id )})
+    }
+
 
   return (
     <div className='main'>
@@ -38,7 +46,7 @@ function App() {
     <div className='content'>
     <div className='cvEdit'>
     <BasicInfo setName={setName} info={info} setSurname={setSurname} setEmail={setEmail} />
-    <EducationInfo handleAdd={addEducation} educationItems={info.education} />
+    <EducationInfo handleAdd={addEducation} deleteEducation={deleteEducation} educationItems={info.education} />
     <ExperienceInfo/>
     </div>
     <div className="cvView">

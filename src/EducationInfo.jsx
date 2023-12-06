@@ -4,7 +4,7 @@ import "./InfoCards.css"
 import showButtonHandler from "./sharedFunctions"
 
 
-export default function EducationInfo({handleAdd,educationItems}) {
+export default function EducationInfo({deleteEducation,handleAdd,educationItems}) {
     return (
         <div>
             <button id="educationInfoContainer" className="container" onClick={
@@ -12,29 +12,35 @@ export default function EducationInfo({handleAdd,educationItems}) {
                 <p className="ButtonLabel"> Education</p>
                 <img className="showMenuButton" id="educationInfoShowMenuButton" src={imgurl} alt="" />
             </button>
-            <EducationInfoDropDown educationItems={educationItems} handleAdd={handleAdd}/>
+            <EducationInfoDropDown deleteEducation={deleteEducation} educationItems={educationItems} handleAdd={handleAdd}/>
         </div>
     )
 }
 
-function EducationInfoDropDown({handleAdd,educationItems}) {
+function EducationInfoDropDown({deleteEducation,handleAdd,educationItems}) {
     const [education, setEducation] = useState({
-        "institution": "qweqw",
+        "institution": "",
         "titleOfStudy": "",
         "startDate": "",
         "endDate": "",
+        "id":"",
 
 
     })
 
     function handleChange (e) {
         console.log(education)
-        setEducation({...education,[e.target.name]:e.target.value,id:""})
+        setEducation({...education,[e.target.name]:e.target.value,})
     }
-
+    function handleEducationClick (e){
+        console.log(e.target.id)
+        console.log(educationItems);
+        deleteEducation(e.target.id)
+    }
+    
     return (
         <div className="dropDownMenu" id="educationInfoDropDownMenu">
-            <EducationItems items={educationItems} />
+            <EducationItems items={educationItems} handleEducationClick={handleEducationClick} />
             <label htmlFor="institution">Institution</label>
             <input type="text" value={education.institution} onChange={handleChange} name="institution" placeholder="Institution" />
             <label htmlFor="titleOfStudy">Title Of Study</label>
@@ -43,14 +49,17 @@ function EducationInfoDropDown({handleAdd,educationItems}) {
             <input type="text" onChange={handleChange} name="startDate" value={education.startDate} placeholder="Start Date" />
             <label htmlFor="endDate">End Date</label>
             <input type="text" onChange={handleChange} name="endDate" placeholder="End Date" value={education.endDate} />
-            <button onClick={()=>handleAdd(education)}>Add</button>
+            <button onClick={()=>{
+                setEducation({...education,id:(Math.random()*10000)})
+                handleAdd(education)}}
+                >Add</button>
         </div>
     )
 }
 
-function EducationItems ({items}){
+function EducationItems ({items,handleEducationClick}){
     let itemsElements =  items.map(item=>{
-            return (<p>{item.titleOfStudy}</p>)
+            return (<button id={item.id} onClick={handleEducationClick} >{item.titleOfStudy}</button>)
            
     })
     return itemsElements
