@@ -10,6 +10,10 @@
   width: 50%;
 }
 
+.cvView {
+  width: 80%;
+}
+
 .content{
   display: flex;
   width: 90%;

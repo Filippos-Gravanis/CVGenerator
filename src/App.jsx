@@ -10,7 +10,8 @@ function App() {
       "name": "",
       "surname": "",
       "email":"",
-      "education":[]
+      "education":[],
+      "experience":[],
     }
 
   )
@@ -31,12 +32,20 @@ function App() {
       setInfo({...info,education:info.education.concat(education)})
     }
 
+    function addExperience (experience){
+      setInfo({...info,experience:info.experience.concat(experience)})
+    }
+
     function deleteEducation (id){
       console.log(id)
       info.education.forEach(element => {
         console.log(element.id,id)
       });
       setInfo({...info,education:info.education.filter(edu => edu.id != id )})
+    }
+
+    function deleteExperience (id) {
+     setInfo ({...info , experience:info.experience.filter(exp => exp.id != id )})
     }
 
 
@@ -47,10 +56,10 @@ function App() {
     <div className='cvEdit'>
     <BasicInfo setName={setName} info={info} setSurname={setSurname} setEmail={setEmail} />
     <EducationInfo handleAdd={addEducation} deleteEducation={deleteEducation} educationItems={info.education} />
-    <ExperienceInfo/>
+    <ExperienceInfo experienceItems={info.experience} handleAdd={addExperience} deleteExperience={deleteExperience} />
     </div>
     <div className="cvView">
-
+      
     </div>
     </div>
     </div>

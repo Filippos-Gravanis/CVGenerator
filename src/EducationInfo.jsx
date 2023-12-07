@@ -34,9 +34,8 @@ function EducationInfoDropDown({deleteEducation,handleAdd,educationItems}) {
         setEducation({...education,[e.target.name]:e.target.value,})
     }
     function handleEducationClick (e){
-        console.log(e.target.id)
         console.log(educationItems);
-        deleteEducation(e.target.id)
+        deleteEducation(e.id)
     }
     
     return (
@@ -50,9 +49,8 @@ function EducationInfoDropDown({deleteEducation,handleAdd,educationItems}) {
             <input type="text" onChange={handleChange} name="startDate" value={education.startDate} placeholder="Start Date" />
             <label htmlFor="endDate">End Date</label>
             <input type="text" onChange={handleChange} name="endDate" placeholder="End Date" value={education.endDate} />
-            <button type="submit" onClick={()=>{
-                setEducation({...education,id:(Math.random()*10000)})
-                handleAdd(education)
+            <button  onClick={()=>{
+                handleAdd({...education,id:(Math.random()*10000)})
                 setEducation({
                     "institution": "",
                     "titleOfStudy": "",
@@ -75,7 +73,9 @@ function EducationItems ({items,handleEducationClick}){
             <div className="educationItem" key={item.id}>
             <div className="educationItemHeaderContainer">
                 <div className="educationItemHeader"  id={item.id} onClick={()=>{}} >{item.titleOfStudy}</div>
-                <img src={deleteUrl} onClick={handleEducationClick} className="deleteIcon" alt=""/>
+                <img src={deleteUrl} onClick={() => {
+                    console.log(item)
+                    handleEducationClick(item)}} className="deleteIcon" alt=""/>
             </div>
             <hr className="divider" />
             </div>

@@ -55,7 +55,7 @@
     width: 100%;
     transform: translateY(-10px);
     transition: transform;
-    transition-duration: .1s;
+    transition-duration: .2s;
     background-color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
