@@ -40,7 +40,7 @@ function EducationInfoDropDown({deleteEducation,handleAdd,educationItems}) {
     
     return (
         <div className="dropDownMenu" id="educationInfoDropDownMenu">
-            <EducationItems items={educationItems} handleEducationClick={handleEducationClick} />
+            <EducationItems items={educationItems} handleEducationClick={handleEducationClick} setEducation={setEducation} />
             <label htmlFor="institution">Institution</label>
             <input required type="text" value={education.institution} onChange={handleChange} name="institution" placeholder="Institution" />
             <label htmlFor="titleOfStudy">Title Of Study</label>
@@ -67,12 +67,22 @@ function EducationInfoDropDown({deleteEducation,handleAdd,educationItems}) {
     )
 }
 
-function EducationItems ({items,handleEducationClick}){
+function EducationItems ({items,handleEducationClick,setEducation}){
     let itemsElements =  items.map(item=>{
             return (
             <div className="educationItem" key={item.id}>
             <div className="educationItemHeaderContainer">
-                <div className="educationItemHeader"  id={item.id} onClick={()=>{}} >{item.titleOfStudy}</div>
+                <div className="educationItemHeader"  id={item.id} onClick={()=>{
+                    handleEducationClick(item)
+                    setEducation({
+                        "institution": item.institution,
+                    "titleOfStudy": item.titleOfStudy,
+                    "startDate": item.startDate,
+                    "endDate": item.endDate,
+                    "id": item.id,
+                    })
+
+                }} >{item.titleOfStudy}</div>
                 <img src={deleteUrl} onClick={() => {
                     console.log(item)
                     handleEducationClick(item)}} className="deleteIcon" alt=""/>

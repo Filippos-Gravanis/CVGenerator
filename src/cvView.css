@@ -1,0 +1,21 @@
+.educationItemContainer{
+    display:flex;
+}
+
+.educationDates{
+    width: 40%;
+    margin-left: 3rem;
+}
+
+.basicInfoPar{
+    margin-left: 3rem;
+}
+
+.sectionHeader{
+    margin-left: 3rem;
+}
+
+.viewSection{
+    margin-top: 4rem;
+    margin-bottom:4rem;
+}

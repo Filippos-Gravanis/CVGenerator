@@ -39,7 +39,7 @@ function ExperienceInfoDropDown({deleteExperience,handleAdd,experienceItems}){
 
     return(
         <div className="dropDownMenu" id="experienceInfoDropDownMenu">
-        <ExperienceItems items={experienceItems} onDeleteButtonClicked={onDeleteButtonClicked} />
+        <ExperienceItems items={experienceItems} setExperience={setExperience} onDeleteButtonClicked={onDeleteButtonClicked} />
             <label htmlFor="companyName">Company Name</label>
             <input type="text" value={experience.companyName}  onChange={handleChange} placeholder="Company Name" name="companyName" />
             <label htmlFor="positionTitle">Position Title</label>
@@ -69,12 +69,19 @@ function ExperienceInfoDropDown({deleteExperience,handleAdd,experienceItems}){
     )
 }
 
-function ExperienceItems ({items,onDeleteButtonClicked}) {
+function ExperienceItems ({items,onDeleteButtonClicked,setExperience}) {
     let experienceElements = items.map(item => {
         return (
             <div  className="educationItem" key={item.id}>
             <div className="educationItemHeaderContainer">
-                <div className="educationItemHeader"  id={item.id} onClick={()=>{}} >{item.companyName}</div>
+                <div className="educationItemHeader"  id={item.id} onClick={()=>{
+                    onDeleteButtonClicked(item)
+                    setExperience({"companyName": item.companyName,
+                    "positionTitle": item.positionTitle,
+                    "expStartDate": item.positionTitle,
+                    "expEndDate": item.positionTitle,
+                    "id": item.id,})
+                }} >{item.companyName}</div>
                 <img src={deleteUrl} onClick={()=>onDeleteButtonClicked(item)} className="deleteIcon" alt=""/>
             </div>
             <hr className="divider" />
